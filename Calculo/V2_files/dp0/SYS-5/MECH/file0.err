@@ -1,0 +1,31 @@
+/COM,ANSYS RELEASE 2025 R1           BUILD 25.1      UP20241202       18:50:35
+
+ *** WARNING ***                         CP =       0.953   TIME= 18:50:36
+ Element shape checking is currently inactive.  Issue SHPP,ON or         
+ SHPP,WARN to reactivate, if desired.                                    
+
+ *** WARNING ***                         CP =       1.016   TIME= 18:50:36
+ MPC184 elements are being used in the current analysis and the          
+ NLGEOM,ON command has not been used.  Thus, only linearized behavior    
+ will be considered.  If finite rotation and large deflection effects    
+ are to be considered, please use the NLGEOM,ON command.                 
+
+ *** WARNING ***                         CP =       1.016   TIME= 18:50:36
+ The preconditioned conjugate gradient solver used by (EQSLV,PCG         
+ command) only works for fully constrained models.  There are less than  
+ 3 constraints in the current model.  The solver has been reset to       
+ sparse (EQSLV,SPARSE).                                                  
+
+ *** WARNING ***                         CP =       1.047   TIME= 18:50:36
+ Material number 4 (used by element 32445) should normally have at least 
+ one MP or one TB type command associated with it.  Output of energy by  
+ material may not be available.                                          
+
+ *** WARNING ***                         CP =       1.047   TIME= 18:50:36
+ No constraints have been defined using the D command.                   
+
+ *** WARNING ***                         CP =       3.297   TIME= 18:50:37
+ Pivoting has been activated for the Distributed Sparse Matrix Solver .  
+ The memory required may greatly exceed the predicted amount.  In that   
+ event, use the DSPOPTION command to change the memory mode and/or       
+ memory size used by the Distributed Sparse Matrix Solver.               

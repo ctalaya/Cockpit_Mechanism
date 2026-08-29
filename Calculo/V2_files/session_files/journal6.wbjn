@@ -1,0 +1,102 @@
+# encoding: utf-8
+# 2025 R1
+SetScriptVersion(Version="25.1.122")
+system1 = GetSystem(Name="SYS 2")
+system1.Delete()
+system2 = GetSystem(Name="SYS 1")
+model1 = system2.GetContainer(ComponentName="Model")
+model1.Edit()
+Save(Overwrite=True)
+template1 = GetTemplate(
+    TemplateName="Static Structural",
+    Solver="ANSYS")
+system3 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system2)
+geometryComponent1 = system3.GetComponent(Name="Geometry")
+geometryComponent2 = system2.GetComponent(Name="Geometry")
+geometryComponent1.ReplaceWithShare(
+    TargetSystem=system3,
+    ComponentToShare=geometryComponent2,
+    SourceSystem=system2)
+modelComponent1 = system3.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model2 = system3.GetContainer(ComponentName="Model")
+model2.Edit()
+Save(Overwrite=True)
+Save(Overwrite=True)
+model2.Exit()
+system3.Copy(KeepConnections=False)
+system4 = GetSystem(Name="SYS 3")
+system4.Delete()
+system5 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system3)
+modelComponent2 = system5.GetComponent(Name="Model")
+modelComponent1.TransferData(TargetComponent=modelComponent2)
+system5.Delete()
+system3.Update(AllDependencies=True)
+system6 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system3)
+geometryComponent3 = system6.GetComponent(Name="Geometry")
+geometryComponent3.ReplaceWithShare(
+    TargetSystem=system6,
+    ComponentToShare=geometryComponent1,
+    SourceSystem=system3)
+system3.DisplayText = "Eje H-Point Static Structural"
+system6.DisplayText = "Asiento Static Structural"
+modelComponent3 = system6.GetComponent(Name="Model")
+modelComponent3.Refresh()
+model3 = system6.GetContainer(ComponentName="Model")
+model3.Edit()
+model1.Edit()
+Save(Overwrite=True)
+Save(Overwrite=True)
+model3.Exit()
+system7 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system6)
+geometryComponent4 = system7.GetComponent(Name="Geometry")
+geometryComponent4.ReplaceWithShare(
+    TargetSystem=system7,
+    ComponentToShare=geometryComponent3,
+    SourceSystem=system6)
+system7.DisplayText = "Brazo Estructural Static Structural"
+modelComponent4 = system7.GetComponent(Name="Model")
+modelComponent4.Refresh()
+model4 = system7.GetContainer(ComponentName="Model")
+model4.Edit()
+Save(Overwrite=True)
+model4.Exit()
+system8 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system7)
+geometryComponent5 = system8.GetComponent(Name="Geometry")
+geometryComponent5.ReplaceWithShare(
+    TargetSystem=system8,
+    ComponentToShare=geometryComponent4,
+    SourceSystem=system7)
+system8.DisplayText = "Pedalera Static Structural"
+modelComponent5 = system8.GetComponent(Name="Model")
+modelComponent5.Refresh()
+model5 = system8.GetContainer(ComponentName="Model")
+model5.Edit()
+model5.Exit()
+system9 = template1.CreateSystem(
+    Position="Right",
+    RelativeTo=system8)
+geometryComponent6 = system9.GetComponent(Name="Geometry")
+geometryComponent6.ReplaceWithShare(
+    TargetSystem=system9,
+    ComponentToShare=geometryComponent5,
+    SourceSystem=system8)
+system9.DisplayText = "Volante Static Structural"
+modelComponent6 = system9.GetComponent(Name="Model")
+modelComponent6.Refresh()
+model6 = system9.GetContainer(ComponentName="Model")
+model6.Edit()
+Save(Overwrite=True)
+model6.Exit()
+model1.Exit()
+Save(Overwrite=True)
