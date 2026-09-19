@@ -5,23 +5,24 @@
  = multifrontal statistics =
  ===========================
 
-     number of equations                     =          335172
-     no. of nonzeroes in lower triangle of a =        25962504
-     no. of nonzeroes in the factor l        =       281689866
-     ratio of nonzeroes in factor (min/max)  =          0.7229
-     number of super nodes                   =            6359
-     maximum order of a front matrix         =            3567
-     maximum size of a front matrix          =         6363528
-     maximum size of a front trapezoid       =         3694323
+     number of equations                     =         2403765
+     no. of nonzeroes in lower triangle of a =       198162765
+     no. of nonzeroes in the factor l        =      4258852726
+     ratio of nonzeroes in factor (min/max)  =          0.8859
+     number of super nodes                   =           39496
+     maximum order of a front matrix         =           12585
+     maximum size of a front matrix          =        79197405
+     maximum size of a front trapezoid       =        43963590
      ParMETIS reordering method used (speed) 
-     no. of floating point ops for factor    =      3.7808D+11
-     no. of floating point ops for solve     =      1.0957D+09
-     ratio of flops for factor (min/max)     =          0.6606
-     ratio of allocated memory (max/min)     =          1.3803
-     number of positive pivots               =          335166
+     ParMETIS method 2 used
+     no. of floating point ops for factor    =      1.9835D+13
+     no. of floating point ops for solve     =      1.6785D+10
+     ratio of flops for factor (min/max)     =          0.8358
+     ratio of allocated memory (max/min)     =          1.1695
+     number of positive pivots               =         2403759
      number of negative pivots               =               6
      number of near-zero pivots              =               0
-     partial pivoting tolerance used         =      1.0000D-04
+     partial pivoting tolerance used         =      1.0000D-05
      number of 1x1 pivots                    =               6
      number of 2x2 pivots                    =               0
      number of delayed pivots                =               0
@@ -30,32 +31,32 @@
      number of processes used                =               4
      number of threads per process used      =               1
      number of cores used                    =               4
-     time (cpu & wall) for structure input   =        0.015625        0.018819
-     time (cpu & wall) for ordering          =        0.437500        0.459375
-     time (cpu & wall) for other matrix prep =        0.062500        0.052124
-     time (cpu & wall) for value input       =        0.046875        0.052118
-     time (cpu & wall) for matrix distrib.   =        0.343750        0.332830
-     time (cpu & wall) for numeric factor    =        2.890625        2.896882
-     computational rate (gflops) for factor  =      130.795457      130.512969
-     time (cpu & wall) for numeric solve     =        0.109375        0.102151
-     computational rate (gflops) for solve   =       10.017417       10.725879
-     effective I/O rate (GB/sec) for solve   =       37.320748       39.960184
+     time (cpu & wall) for structure input   =        0.250000        0.239497
+     time (cpu & wall) for ordering          =        4.531250        4.595996
+     time (cpu & wall) for other matrix prep =        0.562500        0.572158
+     time (cpu & wall) for value input       =        0.484375        0.496030
+     time (cpu & wall) for matrix distrib.   =        3.078125        3.122578
+     time (cpu & wall) for numeric factor    =      109.750000      110.720152
+     computational rate (gflops) for factor  =      180.733077      179.149458
+     time (cpu & wall) for numeric solve     =        1.703125        1.716317
+     computational rate (gflops) for solve   =        9.855457        9.779707
+     effective I/O rate (GB/sec) for solve   =       36.717354       36.435138
 
      i/o stats: unit-Core          file length             amount transferred
                                  words       mbytes          words       mbytes
                    ----     ----------     --------     ----------     --------
-                95-   0        786432.        6. MB        770622.        6. MB
-                95-   1        688128.        5. MB        681129.        5. MB
-                95-   2        688128.        5. MB        676274.        5. MB
-                95-   3        622592.        5. MB        599515.        5. MB
+                95-   0    1269432320.     9685. MB    1199816602.     9154. MB
+                95-   1    1124040704.     8576. MB    1062466307.     8106. MB
+                95-   2    1239678976.     9458. MB    1172448430.     8945. MB
+                95-   3    1204224000.     9188. MB    1138510069.     8686. MB
 
                 -------     ----------     --------     ----------     --------
-                Totals:       2785280.       21. MB       2727540.       21. MB
+                Totals:    4837376000.    36906. MB    4573241408.    34891. MB
 
 
-  Solver Memory allocated on core    0       =     1381.220 MB
-  Solver Memory allocated on core    1       =     1112.896 MB
-  Solver Memory allocated on core    2       =     1186.160 MB
-  Solver Memory allocated on core    3       =     1000.660 MB
-  Total Solver Memory allocated by all cores =     4680.935 MB
+  Solver Memory allocated on core    0       =    13073.847 MB
+  Solver Memory allocated on core    1       =    11178.609 MB
+  Solver Memory allocated on core    2       =    12973.583 MB
+  Solver Memory allocated on core    3       =    12093.411 MB
+  Total Solver Memory allocated by all cores =    49319.450 MB
 

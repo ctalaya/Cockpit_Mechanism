@@ -1,92 +1,171 @@
-# Cockpit de Simulación con Geometría Variable (GT ↔ Fórmula)
+# Cockpit_Mechanism
 
-## Descripción
+Modelos CAD y de simulación de un cockpit de simulación de conducción con geometría variable, capaz de reconfigurarse entre una posición de conducción tipo GT y una posición tipo Fórmula.
 
-Trabajo Fin de Máster que desarrolla el diseño y análisis mecánico de un cockpit
-de simulación de conducción capaz de transformar su geometría entre las
-configuraciones ergonómicas **GT** y **Fórmula** mediante un mecanismo
-reconfigurable sincronizado, accionado por dos entradas independientes: el giro
-del asiento sobre el H-Point y un actuador lineal.
+Este repositorio contiene los archivos que sustentan los resultados del Trabajo Fin de Máster **«Diseño y análisis cinemático de un cockpit de simulación de conducción con geometría variable»**, Máster Universitario en Ingeniería Industrial, Universidad Internacional de Valencia (VIU), curso 2025–2026.
 
-El sistema integra estudio antropométrico y ergonómico, diseño conceptual,
-análisis cinemático (grados de libertad, ecuación de Grübler-Kutzbach), análisis
-dinámico (ecuaciones de Newton-Euler) y validación estructural mediante el método
-de elementos finitos (FEM) en ANSYS.
+**Autor:** Carlos Talaya Zamora
+**Director:** José Andrés Alvarado Contreras
 
-## Contenido del repositorio
-
-```
-├── Calculo/        # Proyectos de ANSYS Rigid Dynamics y ANSYS Mechanical
-├── Diseño 3D/      # Modelo CAD del mecanismo (CATIA V5)   
-```
+---
 
 ## Descripción del mecanismo
 
-El mecanismo reconfigurable transforma la posición de conducción entre GT y
-Fórmula mediante el movimiento coordinado del asiento, la pedalera y el módulo
-volante-pantalla.
+El mecanismo posee **dos grados de libertad** (criterio de Grübler-Kutzbach) gobernados por dos entradas de accionamiento coordinadas:
 
-**Grados de libertad:** M = 2 (según la ecuación de Grübler-Kutzbach para
-mecanismos planos, considerando 8 eslabones, 8 pares inferiores y 3 pares
-superiores).
+1. **Giro del asiento** sobre un eje fijo situado en el H-Point del conductor. Este giro arrastra, mediante un tren formado por un sector dentado, un piñón, un engranaje intermedio y una cremallera, el desplazamiento del módulo volante-pantalla sobre una guía inclinada.
+2. **Actuador lineal** que gobierna el brazo estructural de la pedalera y, a través de una transmisión por cadena, el giro de la propia pedalera respecto a dicho brazo.
 
-* **Entrada 1 — Giro del asiento (θ1):** el asiento pivota sobre el eje del
-H-Point (O), materializado por los componentes Eje y Soporte Eje, solidarios a
-la bancada. Un sector de engranaje solidario al asiento engrana con un piñón
-(Engranaje Pequeño), que a su vez mueve un Engranaje Grande sobre el mismo eje.
-Este engrana con una cremallera solidaria al Volante, que se desplaza guiado
-por la Guía Asiento. La traslación del módulo volante-pantalla queda así
-completamente determinada por θ1, sin accionamiento propio.
-* **Entrada 2 — Actuador lineal:** articulado entre un punto del Asiento (Aa) y
-un punto del Brazo Estructural de la Pedalera (Ab). El Brazo Estructural pivota
-sobre un punto (Ob) solidario al propio asiento, de forma que su orientación
-absoluta resulta de la composición del giro del asiento (θ1) y de su giro
-relativo (β) inducido por el actuador. Un engranaje solidario al asiento en Ob
-transmite movimiento, mediante cadena, a un segundo engranaje solidario a la
-Pedalera (modelado en ANSYS Rigid Dynamics mediante una Constraint Equation
-entre las revolutas Asiento-Brazo y Brazo-Pedalera), de modo que la pedalera
-gira en proporción directa a β y permanece inmóvil si el actuador no se acciona.
+El H-Point permanece fijo durante toda la transformación, lo que constituye el criterio de diseño fundamental del mecanismo: el conductor no se desplaza en altura, sino que rota alrededor de su propio punto de cadera.
 
-## Requisitos de diseño
+---
 
-* **Rango de usuarios:** estatura entre 150–205 cm, masa entre 50–150 kg
-* **Recorridos geométricos GT → Fórmula** (obtenidos por comparación de modelos
-antropométricos superpuestos sobre el H-Point):
+## Especificaciones de diseño
 
-  * Desplazamiento horizontal del volante: ≈ 103 mm
-  * Incremento de altura del volante: ≈ 20 mm
-  * Desplazamiento vertical de la pedalera: ≈ 420 mm
-  * Variación angular del respaldo: ≈ 22°
+Recorridos requeridos para la transición GT → Fórmula, referidos al H-Point:
 
-## Metodología
+| Magnitud | Valor |
+|---|---|
+| Desplazamiento horizontal del volante | 237,39 mm |
+| Desplazamiento vertical del volante | 70,64 mm |
+| Desplazamiento longitudinal de la pedalera | 69,90 mm |
+| Desplazamiento vertical de la pedalera | 553,65 mm |
+| Giro del asiento sobre el H-Point | 32,5° |
+| Giro absoluto de la pedalera | 21° |
+| Desplazamiento del H-Point | 0 mm (punto fijo) |
 
-1. Definición de requisitos ergonómicos y antropométricos del sistema
-2. Generación de alternativas de diseño conceptual y evaluación mediante matriz
-de decisión ponderada
-3. Selección y descripción detallada de la solución adoptada (sistema de
-reconfiguración sincronizado)
-4. Modelado CAD 3D del mecanismo en CATIA V5
-5. Análisis cinemático: cálculo de grados de libertad y modelo geométrico
-6. Análisis dinámico mediante ecuaciones de Newton-Euler, en ANSYS Rigid Dynamics
-7. Análisis estructural mediante el método de elementos finitos (FEM) en ANSYS
-Mechanical: tensiones, deformaciones, rigidez y factor de seguridad
+## Parámetros de las transmisiones
 
-## Herramientas utilizadas
+**Tren de engranajes del módulo volante** (módulo m = 2 mm, ancho de cara 20 mm)
 
-* **CATIA V5** — modelado 3D del mecanismo
-* **ANSYS Rigid Dynamics** — análisis cinemático y dinámico
-* **ANSYS Mechanical** — análisis estructural FEM
+| Elemento | z | R primitivo |
+|---|---|---|
+| Sector dentado del asiento | 291 | 291,0 mm |
+| Piñón | 20 | 20,0 mm |
+| Engranaje intermedio | 30 | 30,0 mm |
 
-## Objetivo general
+Relación de transmisión i₁ = 14,555 · Recorrido de la cremallera 247,68 mm · Inclinación de la guía 16,58°
 
-Desarrollar el diseño y análisis mecánico de un cockpit de simulación con
-geometría variable, mediante el estudio cinemático y dinámico de un sistema
-reconfigurable que permita reproducir diferentes configuraciones de conducción y
-determinar los requisitos necesarios para su accionamiento.
+**Transmisión por cadena de la pedalera** (ISO 08B, paso 12,7 mm)
 
-## Autor
+| Elemento | z | R primitivo |
+|---|---|---|
+| Piñón solidario al asiento | 27 | 54,70 mm |
+| Piñón solidario a la pedalera | 15 | 30,55 mm |
 
-Carlos Talaya Zamora
-Máster Universitario en Ingeniería Industrial — Universidad Internacional de
-Valencia (VIU)
+Relación de transmisión i₂ = 1,7905 · Distancia entre ejes 387,0 mm · Longitud de cadena 82 eslabones (1.041,4 mm)
 
+**Actuador lineal**
+
+Longitud de referencia 150,0 mm · Carrera 17,86 mm · Giro relativo del brazo β = 14,55° · Velocidad de extensión 0,595 mm/s · Tiempo de operación 30 s
+
+---
+
+## Resultados de validación
+
+Contraste entre los requisitos de diseño y los valores obtenidos en la simulación cinemática:
+
+| Magnitud | Requisito | Simulación | Desviación |
+|---|---|---|---|
+| Desplazamiento horizontal del volante | 237,39 mm | 237,41 mm | 0,01 % |
+| Desplazamiento vertical del volante | 70,64 mm | 70,64 mm | 0,00 % |
+| Desplazamiento longitudinal de la pedalera | 69,90 mm | 70,09 mm | 0,27 % |
+| Desplazamiento vertical de la pedalera | 553,65 mm | 551,46 mm | −0,40 % |
+| Giro del asiento sobre el H-Point | 32,50° | 32,504° | 0,01 % |
+| Giro absoluto de la pedalera | 21,00° | 21,04° | 0,19 % |
+
+## Resultados dinámicos
+
+Solicitaciones obtenidas en el análisis dinámico, por lateral del mecanismo:
+
+| Magnitud | t = 0 s (GT) | t = 30 s (Fórmula) |
+|---|---|---|
+| Reacción en el apoyo del H-Point | 1.007,40 N | 1.007,40 N |
+| Guía del módulo volante-pantalla | 305,90 N | 305,90 N |
+| Revoluta brazo-pedalera | 249,48 N | 249,47 N |
+| Revoluta asiento-brazo | 2.469,40 N | 3.511,60 N |
+| Pasadores del actuador | 2.455,20 N | 3.667,40 N |
+| Fuerza del actuador lineal | 2.455,70 N | 3.665,70 N |
+| Par en el eje del H-Point | 141,93 N·m | 138,45 N·m |
+
+El par alcanza su valor máximo de 151,71 N·m en t = 13,82 s. El mecanismo no presenta un instante crítico común a todas sus piezas: las solicitaciones de origen gravitatorio permanecen constantes, mientras que las asociadas al accionamiento del brazo crecen de forma monótona hasta la configuración Fórmula.
+
+## Verificación resistente de las transmisiones
+
+Acero S275JR, límite elástico 275 MPa.
+
+| Elemento | Tensión | Factor de seguridad |
+|---|---|---|
+| Sector dentado (Lewis) | 5,69 MPa | 48,3 |
+| Piñón (Lewis) | 8,56 MPa | 32,1 |
+| Cremallera (Lewis) | 3,80 MPa | 72,5 |
+| Cadena ISO 08B-1 (rotura) | T = 775 N | 23,2 |
+
+Ambas transmisiones quedan gobernadas por las exigencias cinemáticas y no por las resistentes, lo que deja un margen de optimización económica pendiente de estudio específico.
+
+---
+
+## Estructura del repositorio
+
+```
+Cockpit_Mechanism/
+├── Diseño 3D/
+│   └── V2/              Modelo tridimensional del mecanismo (CATIA V5)
+├── Calculo/             Modelos de simulación y exportaciones de resultados
+├── .gitattributes       Configuración de Git LFS
+└── README.md
+```
+
+### Diseño 3D/V2
+
+Modelo tridimensional completo del mecanismo elaborado en CATIA V5, en sus dos configuraciones extremas. Incluye las cinco piezas estructurales analizadas (eje del H-Point, asiento, brazo estructural de la pedalera, pedalera y soporte del volante-pantalla) y los componentes de las transmisiones.
+
+### Calculo
+
+Modelos de simulación y resultados exportados:
+
+- **Ansys Rigid Dynamics** — análisis cinemático y dinámico del mecanismo completo a lo largo de los 30 s de la transformación.
+- **Ansys Mechanical** — análisis estructural estático de cada una de las cinco piezas.
+- **Exportaciones de resultados** en formato `.xlsx`, con 603 pasos de tiempo cada una:
+  - `Cinematica.xlsx` — giros, velocidades y aceleraciones angulares de los tres ejes principales.
+  - `Fuerzas_internas.xlsx` — fuerzas transmitidas en las seis uniones del mecanismo.
+  - `Fuerzas_actuador_y_par.xlsx` — fuerza requerida en el actuador lineal y par en el eje del H-Point.
+
+---
+
+## Nota sobre las Constraint Equations
+
+Los engranajes y la transmisión por cadena se han modelado sin dentado, representándolos por sus cilindros primitivos. Las relaciones de transmisión se imponen mediante **Constraint Equations** sobre los grados de libertad de los joints, procedimiento documentado por Ansys para vincular velocidades angulares sin necesidad de modelar el contacto entre dientes.
+
+Esta simplificación es deliberada: el objetivo del análisis es verificar la cinemática de la transformación, no evaluar tensiones de contacto en el dentado. Como consecuencia, el modelo no proporciona fuerzas de engrane ni presiones de contacto, y la transmisión es ideal, sin holguras ni pérdidas por rozamiento.
+
+Debe señalarse que, al no derivarse estas ecuaciones de la geometría sino imponerse explícitamente, el programa reproduce la relación indicada sea o no la correcta. La verificación independiente de las magnitudes de salida frente a los requisitos de partida resulta, por tanto, imprescindible.
+
+---
+
+## Requisitos de software
+
+| Software | Versión empleada |
+|---|---|
+| CATIA V5 | — |
+| Ansys Mechanical / Rigid Dynamics | 2025 R1 |
+| Git LFS | Necesario para clonar el repositorio |
+
+## Clonado del repositorio
+
+Los archivos de modelado y simulación se almacenan mediante **Git Large File Storage**. Es necesario instalar Git LFS antes de clonar:
+
+```bash
+git lfs install
+git clone https://github.com/ctalaya/Cockpit_Mechanism.git
+```
+
+Sin Git LFS, el clonado descargará únicamente los punteros a los archivos, no su contenido.
+
+---
+
+## Licencia y uso
+
+Este repositorio se publica con fines académicos, como material de soporte y verificación del Trabajo Fin de Máster referido. Cualquier uso posterior de su contenido debe citar la fuente:
+
+> Talaya Zamora, C. (2026). *Cockpit_Mechanism: modelos CAD y de simulación de un cockpit reconfigurable* [Repositorio de software]. GitHub. https://github.com/ctalaya/Cockpit_Mechanism

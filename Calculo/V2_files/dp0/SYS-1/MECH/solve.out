@@ -180,11 +180,11 @@
     Number of rejected time steps: 0
     Number of discontinuities: 0
     Number of saved transient configurations: 603
-    Maximum relative error: 3.07261e-09 (%)
+    Maximum relative error: 7.95165e-09 (%)
     Number of position correction iterations: 603
     Number of velocity correction steps: 602
 
-    End of Transient Simulation. CPU Time 0.59375 Elapsed Time 0.577
+    End of Transient Simulation. CPU Time 0.609375 Elapsed Time 0.574
 
 
     ______________________________________________________________________________________________________________________________

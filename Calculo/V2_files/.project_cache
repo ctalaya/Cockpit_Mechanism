@@ -17,6 +17,7 @@ dp0/SYS/ENGD/material.engd
 dp0/SYS/MECH/AssemblyMesh.bin
 dp0/SYS/MECH/AssemblyMesh_Independent.bin
 dp0/SYS/MECH/CAERep.xml
+dp0/SYS/MECH/CAERepOutput.xml
 dp0/SYS/MECH/commands.xml
 dp0/SYS/MECH/file.aapresults
 dp0/SYS/MECH/file.gst
@@ -113,11 +114,17 @@ dp0/SYS-6/MECH/solve.out
 dp0/act.dat
 dp0/designPoint.wbdp
 session_files/journal1.wbjn
+session_files/journal10.wbjn
+session_files/journal11.wbjn
+session_files/journal12.wbjn
 session_files/journal2.wbjn
 session_files/journal3.wbjn
 session_files/journal4.wbjn
 session_files/journal5.wbjn
 session_files/journal6.wbjn
+session_files/journal7.wbjn
+session_files/journal8.wbjn
+session_files/journal9.wbjn
 dp0/
 dpall/
 session_files/
