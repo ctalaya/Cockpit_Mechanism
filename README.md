@@ -111,7 +111,9 @@ Ambas transmisiones quedan gobernadas por las exigencias cinemáticas y no por l
 Cockpit_Mechanism/
 ├── Diseño 3D/
 │   └── V2/              Modelo tridimensional del mecanismo (CATIA V5)
-├── Calculo/             Modelos de simulación y exportaciones de resultados
+│       └── Planos/      Planos de conjunto y de detalle
+├── Calculo/             Modelos de simulación de Ansys
+├── Resultados/          Exportaciones de resultados en formato .xlsx
 ├── .gitattributes       Configuración de Git LFS
 └── README.md
 ```
@@ -122,14 +124,18 @@ Modelo tridimensional completo del mecanismo elaborado en CATIA V5, en sus dos c
 
 ### Calculo
 
-Modelos de simulación y resultados exportados:
+Modelos de simulación:
 
 - **Ansys Rigid Dynamics** — análisis cinemático y dinámico del mecanismo completo a lo largo de los 30 s de la transformación.
 - **Ansys Mechanical** — análisis estructural estático de cada una de las cinco piezas.
-- **Exportaciones de resultados** en formato `.xlsx`, con 603 pasos de tiempo cada una:
-  - `Cinematica.xlsx` — giros, velocidades y aceleraciones angulares de los tres ejes principales.
-  - `Fuerzas_internas.xlsx` — fuerzas transmitidas en las seis uniones del mecanismo.
-  - `Fuerzas_actuador_y_par.xlsx` — fuerza requerida en el actuador lineal y par en el eje del H-Point.
+
+### Resultados
+
+Exportaciones de resultados en formato `.xlsx`, con 603 pasos de tiempo cada una:
+
+- `Cinematica.xlsx` — giros, velocidades y aceleraciones angulares de los tres ejes principales.
+- `Fuerzas internas.xlsx` — fuerzas transmitidas en las seis uniones del mecanismo.
+- `Fuerzas actuador y par.xlsx` — fuerza requerida en el actuador lineal y par en el eje del H-Point.
 
 ---
 
